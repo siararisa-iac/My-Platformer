@@ -13,7 +13,8 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        Move();
+        Shoot();
     }
 
     public void Move()
@@ -21,6 +22,14 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.W))
         {
             transform.position += Vector3.up;
+        }
+    }
+
+    public void Shoot()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Debug.Log("Shoot");
         }
     }
 }
