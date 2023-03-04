@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         Move();
+        Shoot();
     }
 
     public void Move()
@@ -30,5 +31,10 @@ public class PlayerMovement : MonoBehaviour
         {
             Debug.Log("Jump");
         }
+    }
+
+    public void Shoot()
+    {
+        Debug.Log("Shoot");
     }
 }
