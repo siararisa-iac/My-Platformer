@@ -15,4 +15,12 @@ public class PlayerMovement : MonoBehaviour
     {
         
     }
+
+    public void Move()
+    {
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            transform.position += Vector3.up;
+        }
+    }
 }
