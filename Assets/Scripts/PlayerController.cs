@@ -18,7 +18,9 @@ public class PlayerController : MonoBehaviour
     // How big is the radius of our ground checker
     [SerializeField] private float groundRadius = 0.2f;
 
+    private Animator playerAnimator;
     private Rigidbody2D playerRb;
+
     private float horizontalInput;
     private bool isFacingRight = true;
     private bool isJumping = false;
@@ -27,12 +29,16 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         playerRb = GetComponent<Rigidbody2D>();
+        playerAnimator = GetComponent<Animator>();
     }
 
     private void Update()
     {
         //Get the player input here
         horizontalInput = Input.GetAxis("Horizontal");
+        //Set the moveSpeed to the absolute value of our horizontal input
+        //We just need to know if the input's value is greater than 0
+        playerAnimator.SetFloat("moveSpeed", Mathf.Abs(horizontalInput));
 
         //Check if the player should jump
         if (Input.GetKeyDown(KeyCode.Space))
