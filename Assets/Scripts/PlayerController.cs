@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D playerRb;
 
     private float horizontalInput;
-    private bool isFacingRight = true;
+    public bool isFacingRight = true;
     private bool isJumping = false;
 
     // Start is called before the first frame update
@@ -39,7 +39,8 @@ public class PlayerController : MonoBehaviour
         //Set the moveSpeed to the absolute value of our horizontal input
         //We just need to know if the input's value is greater than 0
         playerAnimator.SetFloat("moveSpeed", Mathf.Abs(horizontalInput));
-
+        playerAnimator.SetBool("isGrounded", IsGrounded());
+        playerAnimator.SetTrigger("Attack");
         //Check if the player should jump
         if (Input.GetKeyDown(KeyCode.Space))
         {
