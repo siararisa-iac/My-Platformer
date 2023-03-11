@@ -40,6 +40,7 @@ public class PlayerController : MonoBehaviour
             isJumping = true;
         }
         Flip(horizontalInput);
+
     }
 
     //All physics calculation should be done in the FixedUpdate
