@@ -7,13 +7,20 @@ public class PlayerInteraction : MonoBehaviour
     [SerializeField]
     private List<Interactable> interactables = new List<Interactable>();
 
-    private bool isInteracting = false;
 
     private void Update()
     {
         //We need to call the input check every frame
         //Only set the interact to true if the player presses the interact button
-        isInteracting = Input.GetKeyDown(KeyCode.E);
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            //Check if the list has an element
+            if (interactables.Count > 0)
+            {
+                //Get the first element in the list, then interact with it
+                interactables[0].Interact();
+            }
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -26,22 +33,6 @@ public class PlayerInteraction : MonoBehaviour
             //If it's not yet registered, add it to the list
             interactables.Add(interactable);
         }
-    }
-
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.TryGetComponent<Interactable>(out Interactable interactable))
-        {
-            if (isInteracting)
-            {
-                //Check if the list has an element
-                if (interactables.Count > 0)
-                {
-                    //Get the first element in the list, then interact with it
-                    interactables[0].Interact();
-                }
-            }
-        }   
     }
 
     private void OnTriggerExit2D(Collider2D collision)
