@@ -64,6 +64,8 @@ public class PlayerController : MonoBehaviour
         if (isJumping && IsGrounded())
         {
             playerRb.AddForce(new Vector2(0, jumpForce));
+            //Play the audio
+            AudioManager.Instance.PlayAudio("Jump");
             isJumping = false;
         }
     }
